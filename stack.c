@@ -32,8 +32,7 @@ void push(Stack *S, infotype x)
     allocate(&P, x);
     if (P != Nil)
     {
-        next(P) = (*S).TOP;
-        (*S).TOP = P;
+        Ins_Awal((*S).TOP, P);
     }
 }
 
@@ -41,11 +40,8 @@ void pop(Stack *S, infotype *x)
 {
     if (!isEmptyStack(*S))
     {
-        address P = (*S).TOP;
-        *x = info(P);
+        Del_Awal((*S).TOP, *x);
         printf("Popped: %d\n", *x);
-        (*S).TOP = next(P);
-        deallocate(P);
     }
 }
 
